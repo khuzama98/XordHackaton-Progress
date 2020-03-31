@@ -6,7 +6,7 @@ import { ProductService } from './product.service';
 import { ProductSchema } from './product.model';
 
 @Module({
-  imports: [MongooseModule.forFeature([{name:'Product',schema:ProductSchema}])],
+  imports: [MongooseModule.forFeature([{name:'Course',schema:ProductSchema}])],
   controllers: [ProductController],
   providers: [ProductService],
 })

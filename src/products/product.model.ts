@@ -1,16 +1,20 @@
 import * as mongoose from 'mongoose';
 
 export const ProductSchema= new mongoose.Schema({
-    title: {type:String,required:true},
+    email:{type:String,required:true},
+    title: {type:String,required:true,unique:true},
     description: {type:String,required:true},
-    price: {type:Number,required:true}
+    duration: {type:String,required:true},
+    progress: {type:String, required:true}
 })
 
 
-export interface Product {
+export interface Course {
     
         id: string;
+        email:string,
         title: string; 
         description: string; 
-        price: number
+        duration: String,
+        progress:string
 }

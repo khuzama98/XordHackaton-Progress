@@ -38,13 +38,17 @@ export class AuthService {
           encoding: "base32",
           token: token
         });
-        if(verified){
+        if (verified) {
+          const uniqueMail = await this.authModel.findOne({ email });
+
+          if (!uniqueMail) {
             const newUser = new this.authModel(email);
             const user = await this.authModel.create(newUser);
+          }
         }
         return verified;
       }
-      return "user not found"
+      return "user not found";
     } catch (e) {
       console.log(e);
       return "";
