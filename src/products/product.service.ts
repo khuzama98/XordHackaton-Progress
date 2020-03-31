@@ -31,8 +31,8 @@ export class ProductService {
         return product
     }
 
-    async updateProduct(productId: string, title: string, description: string, price: number) {
-        const updatedProduct=await this.productModel.findOne({_id:productId})
+    async updateProduct(email:string, productId: string, title: string, description: string, duration: string,progress:string) {
+        const updatedProduct=await this.productModel.findOne({email,title})
         // const updatedProduct= new this.productModel({title,description,price})
         // const [product,index]=this.findProduct(productId)
         // const updatedProduct={...product}
@@ -42,8 +42,11 @@ export class ProductService {
         if(description){
             updatedProduct.description=description;
         }
-        if(price){
-            updatedProduct.price=price;
+        if(duration){
+            updatedProduct.duration=duration;
+        }
+        if(progress){
+            updatedProduct.progress=progress;
         }
         const prod=await updatedProduct.save()
         // this.products[index]=updatedProduct;
